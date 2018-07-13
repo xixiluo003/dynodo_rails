@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rb-readline'
 
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
