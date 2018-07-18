@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasks</h1>
+
+<% if @tasks %>
+  <% @tasks.each do |task| %>
+    <p> <%= task.item %> </p>
+  <% end %>
+  <% else %>
+    <p> Create  your first task </p>
+<% end %>
+
+
+<br>
+
+<%= render 'form', task: @task %>

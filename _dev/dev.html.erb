@@ -1,0 +1,42 @@
+<%= link_to 'New Task', new_task_path %>
+
+
+<%= form_for(task) do |f| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+def task_params
+  params.fetch(:task, {})
+end
+
+respond_to do |format|
+  if @task.save
+    format.html { redirect_to @task, notice: 'Task was successfully created.' }
+    format.json { render :show, status: :created, location: @task }
+  else
+    format.html { render :new }
+    format.json { render json: @task.errors, status: :unprocessable_entity }
+  end
+end
+
+
+<tr>
+  <td><%= link_to 'Show', task %></td>
+  <td><%= link_to 'Edit', edit_task_path(task) %></td>
+  <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
